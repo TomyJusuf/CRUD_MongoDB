@@ -4,15 +4,23 @@ const app = express();
 const routerGet = require('./routes/Router');
 require('dotenv').config();
 
-// MIDDLE WARE
+// ------- MIDDLEWARE ---------
+
 // parse application/json - We can log data from POSTMAN ("JSON")
 app.use(express.json());
 
-// URL encoded
+// Enable middleware for parsing URL-encoded data
+// This middleware is used to handle form submissions where data is sent in the URL-encoded format
+// It is necessary to include this middleware to read data from forms, not just JSON
 app.use(express.urlencoded({ extended: false }));
 
 // CRUD CALLING METHOD WITH MIDDLE WARE
-app.use('/', routerGet);
+app.use('/api/product', routerGet);
+
+// WELCOME PAGE
+app.get('/', (req, res) => {
+  res.send('Welcome connection');
+});
 
 // MONGOOSE CONNECTION
 mongoose

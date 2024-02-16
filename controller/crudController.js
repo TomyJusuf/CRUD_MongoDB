@@ -1,10 +1,5 @@
 const Product = require('../models/product.model');
 
-// ------- WELCOME PAGE --------------
-const getWelcome = (req, res) => {
-  res.send('Hello from node API');
-};
-
 // -------- GET ALL PRODUCTS ----------
 const getProduct = async (req, res) => {
   try {
@@ -65,7 +60,6 @@ const deleteProduct = async (req, res) => {
 };
 
 module.exports = {
-  getWelcome,
   getProduct,
   getproductById,
   postProduct,
